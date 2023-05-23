@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProdivers } from "next-auth/react";
 
 const Nav = () => {
+  const isUserLoggedIn = true;
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
@@ -16,7 +17,20 @@ const Nav = () => {
           alt="TuneForge Logo"
           className="object-contain"
         />
+        <p className="logo_text">TuneForge</p>
       </Link>
+
+      <div className="sm:flex hidden">
+        {isUserLoggedIn ? (
+          <div className="flex gap-3 md:gap-5">
+            <Link href="/create-melody" className="black_btn">
+              Create Melody
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </nav>
   );
 };
