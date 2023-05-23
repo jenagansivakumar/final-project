@@ -26,6 +26,20 @@ const Nav = () => {
             <Link href="/create-melody" className="black_btn">
               Create Melody
             </Link>
+            <button type="button" onClick={signOut} className="outline_btn">
+              Sign Out
+            </button>
+
+            <Link href="/profile" className="flex gap-2 flex-center">
+              <Image
+                src="/assets/images/jenagan.png "
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="Profile Picture"
+              />
+              <p className="logo_text">Profile</p>
+            </Link>
           </div>
         ) : (
           <></>
