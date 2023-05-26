@@ -28,15 +28,15 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">TuneForge</p>
       </Link>
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
-              Create Post
+            <Link href="/create-melody" className="black_btn">
+              Create Melody
             </Link>
 
             <button type="button" onClick={signOut} className="outline_btn">
