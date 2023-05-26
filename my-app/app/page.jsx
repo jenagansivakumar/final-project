@@ -1,16 +1,17 @@
 import Feed from "../components/Feed";
+import Image from "next/image";
 
 const Home = () => {
   return (
-    <section className="w-full flex-center flex-col">
+    <section className="w-full flex-center flex-col black-gradient-bg">
       <h1 className="head_text text-center blue_gradient">
         TuneForge
         <br className="max-md:hidden" />
         <span className="pink_gradient text-center">AI-Powered Melodies</span>
       </h1>
-      <p className=" desc text-center">
+      <p className="desc text-center">
         TuneForge is an innovative application that harnesses the cutting-edge
-        technology developed by OpenAI to revolutionise the process of creating
+        technology developed by OpenAI to revolutionize the process of creating
         melodies. With TuneForge, music enthusiasts and creators can embark on a
         journey of limitless possibilities, crafting captivating melodies that
         resonate with their artistic vision. By leveraging the immense
@@ -26,6 +27,8 @@ const Home = () => {
         Step into the realm of endless musical innovation with TuneForge and
         unlock a new era of melody creation like never before.
       </p>
+      <br />
+
       <Feed />
     </section>
   );
