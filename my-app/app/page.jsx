@@ -4,7 +4,7 @@ import Image from "next/image";
 const Home = () => {
   return (
     <section className="w-full flex-center flex-col black-gradient-bg">
-      <h1 className="head_text text-center blue_gradient">
+      <h1 className="head_text text-center pink_gradient">
         TuneForge
         <br className="max-md:hidden" />
         <span className="pink_gradient text-center">AI-Powered Melodies</span>

@@ -1,7 +1,38 @@
-import React from "react";
-
 const CreateMelody = () => {
-  return <div>CreateMelody</div>;
-};
+  const [submitting, setSubmitting] = useState(false);
+  const [post, setPost] = useState({
+    title: "",
+    tag: "",
+  });
 
-export default CreateMelody;
+  const createMelody = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("/api/melody", {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: post.prompt,
+          tag: post.tag,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Melody created");
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <Form
+      type="Create"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={createMelody}
+    />
+  );
+};

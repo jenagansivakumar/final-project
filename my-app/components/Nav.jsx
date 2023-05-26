@@ -22,10 +22,10 @@ const Nav = () => {
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
-          src="/assets/images/logo.svg"
+          src="/assets/images/synthia3.png"
           alt="logo"
-          width={30}
-          height={30}
+          width={70}
+          height={70}
           className="object-contain"
         />
         <p className="logo_text">TuneForge</p>
@@ -95,7 +95,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/create-prompt"
+                  href="/create-melody"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
