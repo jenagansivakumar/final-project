@@ -16,6 +16,7 @@
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
+  background-color: rgb(245, 156, 251);
 }
 
 .main:before {
@@ -80,6 +81,12 @@
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
+.create_btn {
+  @apply rounded-full border border-black bg-pink-300 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+.pink_btn {
+  @apply rounded-full border border-pink-300 bg-pink-300 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-pink-500 text-center text-sm font-inter flex items-center justify-center;
+}
 
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
@@ -140,7 +147,7 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply max-sm:hidden font-satoshi font-semibold text-lg text-pink-500 tracking-wide;
 }
 
 .dropdown {

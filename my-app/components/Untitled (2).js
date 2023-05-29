@@ -2,38 +2,38 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const { data: session } = useSession();
-
+  const isUserLoggedIn = true;
   const [providers, setProviders] = useState(null);
-  const [toggleDropdown, setToggleDropdown] = useState(false);
-
+  const [toggleDropDown, setToggleDropDown] = useState(false);
   useEffect(() => {
-    (async () => {
-      const res = await getProviders();
-      setProviders(res);
-    })();
+    // const setProviders = async () => {
+    //   const providers = await getProviders();
+    //   setProviders(providers);
+    // };
+    // setProviders();
   }, []);
+
+  console.log(toggleDropDown)
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
-          src="/assets/images/synthia3.png"
-          alt="logo"
-          width={70}
-          height={70}
+          src="/assets/images/tuneforge-logo.png"
+          width={30}
+          height={30}
+          alt="TuneForge Logo"
           className="object-contain"
         />
         <p className="logo_text">TuneForge</p>
       </Link>
-
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
-        {session?.user ? (
+        {isUserLoggedIn ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-melody" className="black_btn">
               Create Melody
@@ -43,15 +43,16 @@ const Nav = () => {
               Sign Out
             </button>
 
-            <Link href="/profile">
+            <button className="flex gap-2 flex-center">
               <Image
-                src={session?.user.image}
+                src="/assets/images/jenagan.png "
                 width={37}
                 height={37}
                 className="rounded-full"
-                alt="profile"
+                alt="Profile Picture"
               />
-            </Link>
+              <p className="logo_text">Profile</p>
+            </button>
           </div>
         ) : (
           <>
@@ -60,59 +61,47 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
+                  onClick={() => signIn(provider.id)}
                   className="black_btn"
                 >
-                  Sign in
+                  Sign in {provider.name}
                 </button>
               ))}
           </>
         )}
       </div>
-
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative">
-        {session?.user ? (
-          <div className="flex">
+        {isUserLoggedIn ? (
+          <div className="flex gap-4 md:gap-5">
+            <Link href="/create-melody" className="black_btn">
+              Create Melody
+            </Link>
+            <button type="button" onClick={signOut} className="outline_btn">
+              Sign Out
+            </button>
+
             <Image
-              src={session?.user.image}
+              src="/assets/images/jenagan.png "
               width={37}
               height={37}
               className="rounded-full"
               alt="profile"
-              onClick={() => setToggleDropdown(!toggleDropdown)}
+              onClick={() => setToggleDropDown((toggleDropDown) => !toggleDropDown)}
             />
 
-            {toggleDropdown && (
+            {toggleDropDown && (
               <div className="dropdown">
                 <Link
                   href="/profile"
                   className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
+                  onClick={() => setToggleDropDown(false)}
                 >
-                  My Profile
+                  Profile
                 </Link>
-                <Link
-                  href="/create-melody"
-                  className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  Create Prompt
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    signOut();
-                  }}
-                  className="mt-5 w-full black_btn"
-                >
-                  Sign Out
-                </button>
               </div>
             )}
+            <p className="logo_text">Profile</p>
           </div>
         ) : (
           <>
@@ -121,12 +110,10 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
+                  onClick={() => signIn(provider.id)}
                   className="black_btn"
                 >
-                  Sign in
+                  Sign in {provider.name}
                 </button>
               ))}
           </>
